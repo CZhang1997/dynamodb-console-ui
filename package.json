@@ -1,7 +1,19 @@
 {
-  "name": "aws-util-electron",
+  "name": "dynamodb-console-ui",
   "version": "0.1.0",
+  "description": "A standalone interface for browsing DynamoDB tables and running SQL-like read queries.",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CZhang1997/dynamodb-console-ui.git"
+  },
+  "keywords": [
+    "aws",
+    "dynamodb",
+    "database",
+    "electron",
+    "react"
+  ],
   "main": "index.js",
   "homepage": "./",
   "dependencies": {
@@ -55,11 +67,11 @@
     "electron-builder": "^24.9.1"
   },
   "build": {
-    "appId": "your.app.id",
-    "productName": "YourAppName",
+    "appId": "com.crz97.dynamodb-console-ui",
+    "productName": "DynamoDB Console UI",
     "mac": {
       "target": "dmg",
-      "category": "your.app.category"
+      "category": "public.app-category.developer-tools"
     },
     "files": [
       "build/**/*",

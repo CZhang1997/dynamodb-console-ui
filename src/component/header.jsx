@@ -1,23 +1,19 @@
-import React, { useContext, useState } from "react";
-import Card from "react-bootstrap/Card";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
 
-import AppContext from "../context/app-context";
-
 function Header() {
   const navigate = useNavigate();
-  const {} = useContext(AppContext);
   const isMobile = window.innerWidth < 700;
   return (
     <header>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand onClick={() => {}}>
-            <Card.Img
-              variant="top"
+          <Navbar.Brand onClick={() => navigate("/")}>
+            <img
+              alt="DynamoDB Console UI"
               src={isMobile ? "favicon.ico" : "/apple-touch-icon.png"}
               width={isMobile ? undefined : "35px"}
               height={isMobile ? undefined : "35px"}
@@ -31,13 +27,9 @@ function Header() {
                 Consoles
               </Nav.Link>
             </Nav>
-            {/* <Nav>
-              {<Nav.Link onClick={() => navigate("/about")}>About</Nav.Link>}
-            </Nav> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* <LoginModel showModal={true} /> */}
     </header>
   );
 }

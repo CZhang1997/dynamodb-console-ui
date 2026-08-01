@@ -650,7 +650,128 @@ body {
   text-align: right;
 }
 
-.autoplay-video {
-  width: 100%; /* Set width to 100% to fit within its container */
-  max-width: 100%; /* Ensure video does not exceed its original size */
+.home-page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+}
+
+.home-intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-intro h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.home-intro p,
+.home-section > p {
+  max-width: 700px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.home-primary-action {
+  flex: 0 0 auto;
+  padding: 9px 16px;
+  color: #ffffff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-primary-action:hover {
+  color: #ffffff;
+  background: #92400e;
+}
+
+.home-section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-section h2 {
+  margin: 0 0 16px;
+  font-size: 21px;
+}
+
+.home-steps {
+  display: grid;
+  gap: 14px;
+  margin: 0 0 24px;
+  padding-left: 24px;
+  line-height: 1.6;
+}
+
+.home-security-note,
+.home-limit-note {
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+}
+
+.query-examples {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.query-example {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 20px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.query-example:last-child {
+  border-bottom: 0;
+}
+
+.query-example strong {
+  font-size: 14px;
+}
+
+.query-example code {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--text);
+}
+
+.home-limit-note {
+  margin-top: 20px !important;
+}
+
+@media (max-width: 700px) {
+  .home-page {
+    padding: 40px 20px 64px;
+  }
+
+  .home-intro {
+    display: block;
+  }
+
+  .home-primary-action {
+    display: inline-block;
+    margin-top: 24px;
+  }
+
+  .query-example {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }

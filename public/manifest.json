@@ -1,6 +1,6 @@
 {
-  "short_name": "Dyn Consoles",
-  "name": "DynamoDB Consoles",
+  "short_name": "DynamoDB Console",
+  "name": "DynamoDB Console UI",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#b45309",
+  "background_color": "#f5f5f4"
 }

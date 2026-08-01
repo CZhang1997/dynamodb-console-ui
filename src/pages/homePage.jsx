@@ -1,79 +1,84 @@
 import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import AutoPlayVideo from "../widget/autoPlayVideo";
+import { Link } from "react-router-dom";
 
-const STEP_TO_GENERATE_CRED = [
-  "Login to your AWS console",
-  "Go to I AM -> User page",
-  "Create a new user",
-  "Enter username (like dynamodb access)",
-  "Go to next and attach policy directly",
-  "Select and add DynamoDB related permission, FullPermission/ReadOnly/Write.",
-  "Click on Next and create user",
-  "Go back to I AM role page and select the new user that has been created",
-  "Find where said 'Access key 1' - and click on Create access key",
-  "Select Command Line Interface (CLI)",
-  "Select I understand the above recommendation and want to proceed to create an access key.",
-  "Click on next and Create Access Key",
-  "Save Access key and Secret access key some where so you can enter to on the consoles page",
+const QUERY_EXAMPLES = [
+  {
+    label: "Scan a table",
+    query: "SELECT * FROM Orders",
+  },
+  {
+    label: "Get an item by partition key",
+    query: "SELECT * FROM Orders WHERE orderId = 'A-1001'",
+  },
+  {
+    label: "Query a partition and sort key",
+    query:
+      "SELECT orderId, status FROM Orders WHERE customerId = 'C-42' AND createdAt > '2026-01-01'",
+  },
 ];
 
 function HomePage() {
   return (
-    <Container>
-      <header>
-        <h1>DynamoDB Consoles</h1>
-      </header>
-
-      <section>
-        <h2>About</h2>
-        <p>
-          My DynamoDB Console is an application that allows users to query their
-          DynamoDB tables using SQL-like queries after entering their AWS
-          credentials.
-        </p>
+    <div className="home-page">
+      <section className="home-intro">
         <div>
-          {" "}
-          <AutoPlayVideo videoSource={"/console_demo.mp4"} />
+          <h1>DynamoDB Console UI</h1>
+          <p>
+            Browse tables and run focused DynamoDB requests with a compact,
+            SQL-like query editor. The application talks directly to AWS and
+            does not require an application backend.
+          </p>
         </div>
-        <p>
-          <a href="/consoles">Try it now!</a>
-        </p>
+        <Link className="home-primary-action" to="/consoles">
+          Open console
+        </Link>
       </section>
 
-      {/* Generating AWS Credentials Section */}
-      <section>
-        <h2>Generating AWS Credentials</h2>
-        <p>
-          Here's a guide on generating AWS credentials to use with the
-          application:
-          <ul>
-            {STEP_TO_GENERATE_CRED.map((step) => {
-              return <li key={step}>{step}</li>;
-            })}
-          </ul>
-        </p>
-      </section>
-
-      {/* Supported Queries Section */}
-      <section>
-        <h2>Supported Queries</h2>
-        <p>
-          The application supports various SQL-like queries for querying
-          DynamoDB tables. notes, string will be need to wrap with quote and
-          number will just be number.
-        </p>
-        <h3>Supperted operations</h3>
-        <ul>
+      <section className="home-section" aria-labelledby="getting-started">
+        <h2 id="getting-started">Before you connect</h2>
+        <ol className="home-steps">
           <li>
-            Equal - Checks if a query can be performed using the partition key
-            from the table/index.
+            <strong>Use limited credentials.</strong> Prefer temporary AWS
+            credentials with only the DynamoDB and STS permissions you need.
           </li>
-          <li>Greater Than</li>
-          <li>Less Than</li>
-        </ul>
+          <li>
+            <strong>Select a region.</strong> The console lists tables for the
+            active credential and region.
+          </li>
+          <li>
+            <strong>Choose a table and run a query.</strong> Table metadata is
+            used to select GetItem, Query, or Scan automatically.
+          </li>
+        </ol>
+        <p className="home-security-note">
+          Web credentials remain in memory for the current session. They are
+          sent directly to AWS, never to a project-owned backend, and are not
+          saved in IndexedDB.
+        </p>
       </section>
-    </Container>
+
+      <section className="home-section" aria-labelledby="query-syntax">
+        <h2 id="query-syntax">Supported query syntax</h2>
+        <p>
+          Use <code>SELECT</code>, an optional <code>WHERE</code> clause, and
+          conditions joined with <code>AND</code>. Supported comparison
+          operators are <code>=</code>, <code>&gt;</code>, and <code>&lt;</code>.
+          Quote strings; leave numbers unquoted.
+        </p>
+        <div className="query-examples">
+          {QUERY_EXAMPLES.map(({ label, query }) => (
+            <div className="query-example" key={label}>
+              <strong>{label}</strong>
+              <code>{query}</code>
+            </div>
+          ))}
+        </div>
+        <p className="home-limit-note">
+          This is a small query language, not PartiQL. Requests currently return
+          up to 10 items per run.
+        </p>
+      </section>
+    </div>
   );
 }
 
