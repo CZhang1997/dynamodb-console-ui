@@ -1,0 +1,41 @@
+/* QueryHistories.css */
+
+.query-history {
+  margin-bottom: 20px; /* Add space at the bottom */
+}
+
+.query-history-title {
+  font-size: 1.2em; /* Adjust title font size */
+  margin-bottom: 10px; /* Add space below the title */
+}
+
+.clickable-list {
+  max-height: calc(1.5em * 5);
+  overflow-y: auto;
+}
+
+.scrollable-list {
+  overflow: hidden; /* Ensure list doesn't extend beyond its container */
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.list-item:hover {
+  background-color: #f4f4f4; /* Change background color on hover */
+}
+
+.list-item .smaller-text {
+  font-size: 0.9em; /* Adjust font size for left side content */
+}
+
+.list-item span:last-child {
+  text-align: right; /* Align the timestamp to the right */
+  font-size: 0.8em; /* Adjust font size for timestamp */
+  color: #888; /* Example color for timestamp */
+}
